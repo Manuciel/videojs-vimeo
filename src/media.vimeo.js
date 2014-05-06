@@ -66,6 +66,7 @@ videojs.Vimeo.prototype.dispose = function(){
 };
 
 videojs.Vimeo.prototype.src = function(src){
+  this.srcVal = src;	
   this.isReady_ = false;
   
   // Regex that parse the video ID for any Vimeo URL
@@ -109,6 +110,7 @@ videojs.Vimeo.prototype.setCurrentTime = function(seconds){
 
 videojs.Vimeo.prototype.duration = function(){ return this.vimeoInfo.duration || 0; };
 videojs.Vimeo.prototype.buffered = function(){ return videojs.createTimeRange(0, this.vimeoInfo.buffered || 0); };
+videojs.Vimeo.prototype.currentSrc = function(){ return this.srcVal; };
 
 videojs.Vimeo.prototype.volume = function() { return (this.vimeoInfo.muted)? this.vimeoInfo.muteVolume : this.vimeoInfo.volume; };
 videojs.Vimeo.prototype.setVolume = function(percentAsDecimal){
